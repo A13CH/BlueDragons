@@ -1,36 +1,163 @@
+/* Import Comfortaa font (300 = light) */
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
+
 #sidebar {
     width: 250px;
     position: fixed;
-    top: 0;
-    left: 0;
     height: 100%;
     background-color: #dbe9ee;
     padding-top: 20px;
+    border-color: black;
+    border-right: solid 3px;
+}
+
+body{ 
+    font-family: 'Comfortaa', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 300; /* use light weight */
+    margin: 0;
+}
+
+.main {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+        
+.status { 
+    display: flex; 
+    gap: 12px; 
+    margin-bottom: 18px; 
+}
+        
+.status > .status { 
+    background: #fff; 
+    border: 1px solid #e0e0e0; 
+    padding: 12px; 
+    width: 160px; 
+    box-sizing: border-box; 
+    border-radius: 6px; 
+}
+        
+.metric-value {
+    font-size: 1.4em; 
+    margin-top: 6px; 
+    color: #111; 
 }
 
 header.major{
-    border-bottom: solid 3px #166088;
-    display: inline-block;
-    margin-left: 2em;
-    padding: 0 0.75em 0.5em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0.5em 0;
+    font-size: 1em;
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+#menu a{
+    text-decoration: none;   /* remove underline */
+    color: inherit;          /* use the .navigation text color */
+    display: block;          /* makes entire area clickable */
 }
 
 .navigation {
     list-style-type: none;
     display: block;
-    padding: 0.5em;
-    color: #FFFFFF;
+    width: 100%;
+    padding: 0.5em 0;
+    margin: 0;
+    color: #000000;
     text-decoration: none;
+    text-align: center;
+    font-size: 1.5em;
 }
 
 .navigation a {
     text-decoration: none;
-    color: #4a6fa5;
-    cursor: default;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
 }
 
-.navigation a:hover{
-    color: #166088;
-    font-size: 1.1em;
+#header-logo{
+    background-color: #cdaeec;
+    margin: 15px;
 }
 
+.nav-div{
+    background-color: #74a2e7;
+    margin: 20px;
+    border-radius: 40px;
+}
+
+.nav-div a {
+    color: black;
+    text-decoration: none;
+}
+
+.nav-div:hover{
+    background-color: #4a6fa5;
+}
+
+#top-div{
+    margin-top: 100px;
+}
+
+/* Toggle button */
+#sidebarToggle {
+    position: fixed;
+    top: 5px;
+    left: 265px; /* sidebar width + margin */
+    z-index: 2000;
+    background-color: #636363;
+    color: white;
+    border: none;
+    opacity: 0.5;
+    padding: 6px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: left 0.3s ease;
+}
+
+/* Sidebar */
+#sidebar {
+    width: 250px;
+    height: 100%;
+    background: #dbe9ee;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-right: 3px solid black;
+    padding-top: 20px;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+    z-index: 1500;
+}
+
+/* Hidden sidebar */
+#sidebar.closed {
+    transform: translateX(-250px);
+}
+
+/* Main layout shift */
+.main {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+}
+
+.main.shifted {
+    margin-left: 0;
+}
+
+/* Move button when sidebar is closed */
+#sidebar.closed ~ #sidebarToggle {
+    left: 15px;
+}
